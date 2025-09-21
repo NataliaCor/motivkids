@@ -1,0 +1,68 @@
+/* App Navigation Styles */
+.app-navigation {
+  background: var(--color-white);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+}
+
+.nav-brand h1 {
+  color: var(--color-accent);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-brand h1:hover {
+  color: var(--color-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.app-content {
+  min-height: calc(100vh - 80px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 12px 20px;
+  }
+  
+  .nav-brand h1 {
+    font-size: 1.5rem;
+  }
+  
+  .nav-links {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+  }
+}

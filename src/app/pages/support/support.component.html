@@ -1,0 +1,88 @@
+<div class="support-page">
+  <!-- Navigation Bar -->
+  <app-navbar 
+    [userName]="userName"
+    [userAvatar]="userAvatar"
+    [notificationCount]="notificationCount"
+    [messageCount]="messageCount">
+  </app-navbar>
+
+  <!-- Main Content -->
+  <main class="support-main">
+    <div class="support-container">
+      
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">Centro de Soporte y Ayuda</h1>
+        <p class="page-subtitle">Encuentra respuestas rápidas y obtén la ayuda que necesitas</p>
+      </div>
+
+      <!-- Support Cards Section -->
+      <section class="support-cards">
+        
+        <!-- FAQ Card -->
+        <app-support-card
+          title="Preguntas Frecuentes"
+          description="Encuentra respuestas a las preguntas más comunes"
+          icon="❓"
+          iconColor="turquoise"
+          type="faq"
+          [items]="faqItems">
+        </app-support-card>
+
+        <!-- Contact Card -->
+        <app-support-card
+          title="Contacto con Soporte"
+          description="Comunícate directamente con nuestro equipo"
+          icon="🎧"
+          iconColor="green"
+          type="contact"
+          [contactOptions]="contactOptions">
+        </app-support-card>
+
+        <!-- Tutorial Card -->
+        <app-support-card
+          title="Tutorial y Guía Rápida"
+          description="Aprende a usar el sistema paso a paso"
+          icon="🎓"
+          iconColor="blue"
+          type="tutorial"
+          [items]="tutorialItems">
+        </app-support-card>
+
+      </section>
+
+      <!-- Action Buttons Bar -->
+      <section class="action-buttons">
+        <div class="buttons-container">
+          
+          <app-button
+            text="Ver Preguntas Frecuentes"
+            variant="outline"
+            size="medium"
+            class="faq-button"
+            (buttonClick)="onViewFAQ()">
+          </app-button>
+
+          <app-button
+            text="▶️ Iniciar Tutorial"
+            variant="outline"
+            size="medium"
+            class="tutorial-button"
+            (buttonClick)="onStartTutorial()">
+          </app-button>
+
+          <app-button
+            text="Contactar Soporte"
+            variant="accent"
+            size="medium"
+            class="contact-button"
+            (buttonClick)="onContactSupport()">
+          </app-button>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>

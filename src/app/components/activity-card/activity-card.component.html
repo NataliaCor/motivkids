@@ -1,0 +1,34 @@
+<div class="activity-card" [ngClass]="'activity-card--' + variant">
+  <!-- Activity Icon -->
+  <div class="activity-icon">
+    <span class="icon">{{ activity.icon }}</span>
+  </div>
+
+  <!-- Activity Content -->
+  <div class="activity-content">
+    <h3 class="activity-title">{{ activity.title }}</h3>
+    <p class="activity-description">{{ activity.description }}</p>
+    
+    <!-- Additional metadata for results variant -->
+    @if (variant === 'result' && activity.duration) {
+      <div class="activity-meta">
+        <span class="duration">⏱️ {{ activity.duration }}</span>
+        @if (activity.difficulty) {
+          <span class="difficulty" [ngClass]="'difficulty--' + activity.difficulty">
+            {{ activity.difficulty === 'easy' ? 'Fácil' : activity.difficulty === 'medium' ? 'Medio' : 'Difícil' }}
+          </span>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Add Button -->
+  <div class="activity-action">
+    <app-button
+      text="+ Agregar"
+      variant="turquoise"
+      size="small"
+      (buttonClick)="onAddActivity()">
+    </app-button>
+  </div>
+</div>

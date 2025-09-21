@@ -1,0 +1,58 @@
+<!-- Modal Backdrop -->
+<div 
+  *ngIf="isOpen" 
+  class="modal-backdrop"
+  (click)="onBackdropClick($event)"
+  [class]="modalClasses">
+  
+  <!-- Modal Container -->
+  <div 
+    #modalContainer
+    class="modal-container"
+    [class.modal-container--animating]="isAnimating">
+    
+    <!-- Modal Header -->
+    <div *ngIf="header" class="modal-header">
+      <div class="modal-header__content">
+        <div *ngIf="header.icon" class="modal-header__icon">
+          <i [class]="header.icon"></i>
+        </div>
+        <div class="modal-header__text">
+          <h2 class="modal-header__title">{{ header.title }}</h2>
+          <p *ngIf="header.subtitle" class="modal-header__subtitle">{{ header.subtitle }}</p>
+        </div>
+      </div>
+      
+      <!-- Close Button -->
+      <button 
+        *ngIf="config.showCloseButton || header.showCloseButton"
+        class="modal-header__close"
+        (click)="closeModal()"
+        type="button"
+        aria-label="Cerrar modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+
+    <!-- Modal Footer -->
+    <div *ngIf="actions && actions.length > 0" class="modal-footer">
+      <div class="modal-footer__actions">
+        <app-button
+          *ngFor="let action of actions; let i = index"
+          [variant]="action.variant || 'outline'"
+          [disabled]="!!(action.disabled || action.loading)"
+          (buttonClick)="onActionClick(action, i)"
+          class="modal-footer__action">
+          {{ action.label }}
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

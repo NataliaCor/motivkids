@@ -1,0 +1,90 @@
+<div class="data-table">
+  @if (loading) {
+    <div class="data-table__loading">
+      <div class="loading-spinner">⏳</div>
+      <p>Cargando datos...</p>
+    </div>
+  } @else if (data.length === 0) {
+    <div class="data-table__empty">
+      <div class="empty-icon">📋</div>
+      <p>{{ emptyMessage }}</p>
+    </div>
+  } @else {
+    <div class="data-table__container">
+      <table class="data-table__table">
+        <thead class="data-table__header">
+          <tr>
+            @for (column of columns; track column.key) {
+              <th class="data-table__header-cell"
+                  [class.data-table__header-cell--sortable]="column.sortable"
+                  [style.width]="column.width"
+                  (click)="onSort(column)">
+                <div class="header-content">
+                  <span>{{ column.label }}</span>
+                  @if (column.sortable) {
+                    <span class="sort-indicator"
+                          [class.sort-indicator--active]="sortColumn === column.key">
+                      @if (sortColumn === column.key && sortDirection === 'asc') {
+                        ▲
+                      } @else if (sortColumn === column.key && sortDirection === 'desc') {
+                        ▼
+                      } @else {
+                        ⇅
+                      }
+                    </span>
+                  }
+                </div>
+              </th>
+            }
+            @if (actions.length > 0) {
+              <th class="data-table__header-cell data-table__header-cell--actions">
+                Acciones
+              </th>
+            }
+          </tr>
+        </thead>
+        
+        <tbody class="data-table__body">
+          @for (item of data; track item.id || $index) {
+            <tr class="data-table__row">
+              @for (column of columns; track column.key) {
+                <td class="data-table__cell">
+                  @if (column.type === 'badge') {
+                    @let badgeProps = getStatusBadgeProps(getCellValue(item, column));
+                    <app-status-badge
+                      [status]="badgeProps.status"
+                      [text]="badgeProps.text"
+                      size="small">
+                    </app-status-badge>
+                  } @else {
+                    {{ getCellValue(item, column) }}
+                  }
+                </td>
+              }
+              
+              @if (actions.length > 0) {
+                <td class="data-table__cell data-table__cell--actions">
+                  <div class="action-buttons">
+                    @for (action of actions; track action.action) {
+                      <button 
+                        class="action-button"
+                        [class.action-button--primary]="action.color === 'primary'"
+                        [class.action-button--secondary]="action.color === 'secondary'"
+                        [class.action-button--success]="action.color === 'success'"
+                        [class.action-button--warning]="action.color === 'warning'"
+                        [class.action-button--error]="action.color === 'error'"
+                        [title]="action.label"
+                        (click)="onActionClick(action, item, $event)">
+                        {{ action.icon }}
+                      </button>
+                    }
+                  </div>
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

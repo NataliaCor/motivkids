@@ -1,0 +1,99 @@
+/* Error Modal Styles */
+.error-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.error-icon {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-icon svg {
+  filter: drop-shadow(0 4px 12px rgba(220, 38, 38, 0.3));
+  animation: errorShake 0.6s ease-out;
+}
+
+.error-message {
+  margin-bottom: 20px;
+}
+
+.error-message p {
+  font-size: 16px;
+  color: var(--color-gray-dark);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.error-details-section {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.details-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: var(--color-gray-dark);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.details-toggle:hover {
+  background: var(--color-gray-light);
+  color: var(--color-accent);
+}
+
+.details-toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.details-toggle svg.rotated {
+  transform: rotate(180deg);
+}
+
+.error-details {
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--color-gray-light);
+  border-radius: 8px;
+  border-left: 4px solid #DC2626;
+}
+
+.error-details pre {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--color-gray-dark);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+/* Error Animation */
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+/* Custom modal styling for error */
+:host ::ng-deep .error-modal .modal-container {
+  border-top: 4px solid #DC2626;
+}
+
+:host ::ng-deep .error-modal .modal-header__title {
+  color: #DC2626;
+}

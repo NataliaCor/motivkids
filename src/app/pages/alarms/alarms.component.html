@@ -1,0 +1,72 @@
+<div class="alarms-page">
+  <!-- Navigation Bar -->
+  <app-navbar 
+    [userName]="userName"
+    [userAvatar]="userAvatar"
+    [notificationCount]="notificationCount"
+    [messageCount]="messageCount">
+  </app-navbar>
+
+  <!-- Main Content -->
+  <main class="alarms-main">
+    <div class="alarms-container">
+      
+      <!-- Alarms Management Card -->
+      <app-card 
+        padding="large"
+        shadow="medium"
+        class="alarms-card">
+        
+        <!-- Card Header -->
+        <div class="card-header">
+          <h1 class="page-title">Alarmas Activas</h1>
+          <app-button
+            text="+ Agregar Alarma"
+            variant="accent"
+            size="medium"
+            (buttonClick)="onAddAlarm()">
+          </app-button>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+          <div class="search-container">
+            <app-search-input
+              placeholder="Buscar alarmas..."
+              [value]="searchValue"
+              size="medium"
+              (valueChange)="onSearch($event)">
+            </app-search-input>
+          </div>
+          
+          <div class="filter-container">
+            <select 
+              class="status-filter"
+              [value]="selectedStatus"
+              (change)="onStatusChange($event)">
+              @for (option of statusOptions; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-section">
+          <app-data-table
+            [columns]="columns"
+            [data]="filteredAlarms"
+            [actions]="actions"
+            [loading]="loading"
+            [sortColumn]="sortColumn"
+            [sortDirection]="sortDirection"
+            emptyMessage="No se encontraron alarmas"
+            (sort)="onSort($event)"
+            (actionClick)="onActionClick($event)">
+          </app-data-table>
+        </div>
+
+      </app-card>
+    </div>
+  </main>
+</div>

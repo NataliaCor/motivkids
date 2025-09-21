@@ -1,0 +1,39 @@
+<div class="activity-list">
+  <div class="activity-list__header">
+    <h3 class="activity-list__title">{{ title }}</h3>
+    @if (activities.length > maxItems && !showAll) {
+      <button class="activity-list__show-all">Ver todas</button>
+    }
+  </div>
+
+  <div class="activity-list__content">
+    @if (displayedActivities.length > 0) {
+      @for (activity of displayedActivities; track activity.id) {
+        <div class="activity-item">
+          <div class="activity-item__icon"
+               [class.activity-item__icon--primary]="activity.iconColor === 'primary'"
+               [class.activity-item__icon--secondary]="activity.iconColor === 'secondary'"
+               [class.activity-item__icon--accent]="activity.iconColor === 'accent'"
+               [class.activity-item__icon--success]="activity.iconColor === 'success'"
+               [class.activity-item__icon--warning]="activity.iconColor === 'warning'"
+               [class.activity-item__icon--error]="activity.iconColor === 'error'">
+            {{ activity.icon }}
+          </div>
+          
+          <div class="activity-item__content">
+            <div class="activity-item__name">{{ activity.name }}</div>
+            <div class="activity-item__time">{{ activity.completedTime }}</div>
+            @if (activity.description) {
+              <div class="activity-item__description">{{ activity.description }}</div>
+            }
+          </div>
+        </div>
+      }
+    } @else {
+      <div class="activity-list__empty">
+        <div class="activity-list__empty-icon">📋</div>
+        <p class="activity-list__empty-text">No hay actividades recientes</p>
+      </div>
+    }
+  </div>
+</div>

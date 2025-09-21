@@ -1,0 +1,26 @@
+<app-modal
+  [isOpen]="isOpen"
+  [config]="modalConfig"
+  [header]="modalHeader"
+  [actions]="modalActions"
+  (modalClose)="onClose()"
+  customClass="form-modal">
+  
+  <div class="form-content">
+    <!-- Form Content Projection -->
+    <div class="form-container">
+      <ng-content></ng-content>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div *ngIf="isSubmitting" class="form-loading-overlay">
+      <div class="loading-spinner">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="var(--color-gray)" stroke-width="2"/>
+          <path d="M30 16C30 24.284 23.284 31 15 31" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p>Procesando...</p>
+    </div>
+  </div>
+</app-modal>

@@ -1,0 +1,252 @@
+/* Dashboard Layout Styles */
+.dashboard {
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+.dashboard__main {
+  padding: 24px;
+}
+
+.dashboard__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Stats Cards Section */
+.dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Main Content Grid */
+.dashboard__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.dashboard__chart-card {
+  min-height: 400px;
+}
+
+.dashboard__activities-card {
+  min-height: 400px;
+}
+
+/* Chart Styles */
+.chart-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-gray-dark);
+}
+
+.chart-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.chart-legend-color--mood {
+  background-color: var(--color-accent);
+}
+
+.chart-legend-color--energy {
+  background-color: var(--color-primary);
+}
+
+/* Simple Chart Implementation */
+.simple-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  height: 250px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  border-radius: 12px;
+  border: 1px solid var(--color-gray-light);
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  font-size: 0.8rem;
+  color: var(--color-gray-dark);
+  margin-right: 8px;
+}
+
+.chart-content {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex: 1;
+  height: 100%;
+}
+
+.chart-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  height: 100%;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: calc(100% - 24px);
+  width: 100%;
+  justify-content: center;
+}
+
+.chart-bar {
+  min-height: 4px;
+  width: 12px;
+  border-radius: 2px 2px 0 0;
+  transition: all 0.3s ease;
+}
+
+.chart-bar--mood {
+  background: linear-gradient(to top, var(--color-accent), var(--color-accent-light));
+}
+
+.chart-bar--energy {
+  background: linear-gradient(to top, var(--color-primary), var(--color-primary-light));
+}
+
+.chart-day-label {
+  font-size: 0.8rem;
+  color: var(--color-gray-dark);
+  font-weight: 500;
+}
+
+/* Hover Effects */
+.chart-day:hover .chart-bar {
+  transform: scaleY(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard__content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .dashboard__main {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard__main {
+    padding: 16px;
+  }
+  
+  .dashboard__container {
+    gap: 20px;
+  }
+  
+  .dashboard__stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .dashboard__content {
+    gap: 16px;
+  }
+  
+  .dashboard__chart-card,
+  .dashboard__activities-card {
+    min-height: 300px;
+  }
+  
+  .simple-chart {
+    height: 200px;
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .chart-content {
+    gap: 8px;
+  }
+  
+  .chart-bar {
+    width: 10px;
+  }
+  
+  .chart-legend {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .chart-legend-item {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard__main {
+    padding: 12px;
+  }
+  
+  .dashboard__container {
+    gap: 16px;
+  }
+  
+  .simple-chart {
+    height: 180px;
+    padding: 12px;
+    gap: 8px;
+  }
+  
+  .chart-content {
+    gap: 6px;
+  }
+  
+  .chart-bar {
+    width: 8px;
+  }
+  
+  .chart-legend {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .chart-day-label {
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,190 @@
+<div class="design-system">
+  <header class="design-header">
+    <h1>MotivKids - Design System</h1>
+    <p>Componentes y estilos del sistema de diseño</p>
+  </header>
+
+  <main class="design-content">
+    <!-- Typography Section -->
+    <section class="design-section">
+      <h2>Tipografía</h2>
+      <div class="component-demo">
+        <app-typography-demo></app-typography-demo>
+      </div>
+    </section>
+
+    <!-- Colors Section -->
+    <section class="design-section">
+      <h2>Paleta de Colores</h2>
+      <div class="color-palette">
+        <div class="color-card primary">
+          <div class="color-swatch"></div>
+          <div class="color-info">
+            <h3>Primary</h3>
+            <p>#EEC925</p>
+          </div>
+        </div>
+        <div class="color-card primary-light">
+          <div class="color-swatch"></div>
+          <div class="color-info">
+            <h3>Primary Light</h3>
+            <p>#F1DC99</p>
+          </div>
+        </div>
+        <div class="color-card secondary">
+          <div class="color-swatch"></div>
+          <div class="color-info">
+            <h3>Secondary</h3>
+            <p>#9FDFE0</p>
+          </div>
+        </div>
+        <div class="color-card accent">
+          <div class="color-swatch"></div>
+          <div class="color-info">
+            <h3>Accent</h3>
+            <p>#6A951F</p>
+          </div>
+        </div>
+        <div class="color-card accent-light">
+          <div class="color-swatch"></div>
+          <div class="color-info">
+            <h3>Accent Light</h3>
+            <p>#91B472</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <section class="design-section">
+      <h2>Botones</h2>
+      
+      <div class="component-group">
+        <h3>Variantes</h3>
+        <div class="component-demo">
+          <app-button text="Primary Button" variant="primary"></app-button>
+          <app-button text="Secondary Button" variant="secondary"></app-button>
+          <app-button text="Accent Button" variant="accent"></app-button>
+          <app-button text="Outline Button" variant="outline"></app-button>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3>Tamaños</h3>
+        <div class="component-demo">
+          <app-button text="Small" variant="primary" size="small"></app-button>
+          <app-button text="Medium" variant="primary" size="medium"></app-button>
+          <app-button text="Large" variant="primary" size="large"></app-button>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h3>Estados</h3>
+        <div class="component-demo">
+          <app-button text="Normal" variant="primary"></app-button>
+          <app-button text="Disabled" variant="primary" [disabled]="true"></app-button>
+          <app-button text="Loading" variant="primary" [loading]="true"></app-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modals Section -->
+    <section class="design-section">
+      <h2>Modales</h2>
+      
+      <div class="component-group">
+        <h3>Tipos de Modales</h3>
+        <div class="component-demo">
+          <app-button 
+            text="Modal Base" 
+            variant="outline" 
+            (click)="openBaseModal()">
+          </app-button>
+          
+          <app-button 
+            text="Success Modal" 
+            variant="primary" 
+            (click)="openSuccessModal()">
+          </app-button>
+          
+          <app-button 
+            text="Error Modal" 
+            variant="secondary" 
+            (click)="openErrorModal()">
+          </app-button>
+          
+          <app-button 
+            text="Confirm Modal" 
+            variant="accent" 
+            (click)="openConfirmModal()">
+          </app-button>
+          
+          <app-button 
+            text="Info Modal" 
+            variant="outline" 
+            (click)="openInfoModal()">
+          </app-button>
+          
+          <app-button 
+            text="Form Modal" 
+            variant="primary" 
+            (click)="openFormModal()">
+          </app-button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Components -->
+  <app-modal 
+    [isOpen]="showBaseModal"
+    [config]="{
+      size: 'medium',
+      showCloseButton: true
+    }"
+    [header]="{
+      title: 'Modal Base'
+    }"
+    (modalClose)="closeBaseModal()">
+    <div class="modal-content">
+      <p>Este es un modal base con contenido personalizado.</p>
+      <p>Puedes agregar cualquier contenido HTML aquí.</p>
+    </div>
+  </app-modal>
+
+  <app-success-modal
+    [isOpen]="showSuccessModal"
+    title="¡Éxito!"
+    message="La operación se ha completado correctamente."
+    (close)="closeSuccessModal()">
+  </app-success-modal>
+
+  <app-error-modal
+    [isOpen]="showErrorModal"
+    title="Error"
+    message="Ha ocurrido un error. Por favor, inténtalo de nuevo."
+    (close)="closeErrorModal()">
+  </app-error-modal>
+
+  <app-confirm-modal
+    [isOpen]="showConfirmModal"
+    title="Confirmar Acción"
+    message="¿Estás seguro de que quieres continuar?"
+    (confirm)="onConfirm()"
+    (cancel)="onCancel()">
+  </app-confirm-modal>
+
+  <app-info-modal
+    [isOpen]="showInfoModal"
+    title="Información"
+    message="Esta es información importante que debes conocer."
+    (close)="closeInfoModal()">
+  </app-info-modal>
+
+  <app-form-modal
+    [isOpen]="showFormModal"
+    title="Formulario Ejemplo"
+    (submitAction)="onFormSubmit($event)"
+    (cancelAction)="closeFormModal()">
+  </app-form-modal>
+</div>

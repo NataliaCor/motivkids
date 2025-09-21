@@ -1,0 +1,186 @@
+.messages-page {
+  min-height: 100vh;
+  background: #FAFAFA;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages-main {
+  flex: 1;
+  padding: 1rem;
+  margin-top: 70px; /* Account for fixed navbar */
+}
+
+.messages-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.messages-card {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.header-content {
+  flex: 1;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  font-size: 16px;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Filters Section */
+.filters-section {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 400px;
+}
+
+.filter-container {
+  min-width: 200px;
+}
+
+.message-filter {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #374151;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.message-filter:focus {
+  outline: none;
+  border-color: #EEC925;
+  box-shadow: 0 0 0 3px rgba(238, 201, 37, 0.1);
+}
+
+.message-filter:hover {
+  border-color: #D1D5DB;
+}
+
+/* Messages List */
+.messages-list {
+  min-height: 400px;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.empty-icon {
+  color: #9CA3AF;
+  margin-bottom: 16px;
+}
+
+.empty-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 8px 0;
+}
+
+.empty-description {
+  font-size: 16px;
+  color: #6B7280;
+  margin: 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .messages-main {
+    padding: 16px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .page-subtitle {
+    font-size: 14px;
+  }
+
+  .filters-section {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .search-container,
+  .filter-container {
+    max-width: none;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .empty-state {
+    padding: 40px 20px;
+  }
+
+  .empty-title {
+    font-size: 18px;
+  }
+
+  .empty-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .messages-main {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+
+  .filters-section {
+    gap: 8px;
+  }
+}

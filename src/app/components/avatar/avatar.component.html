@@ -1,0 +1,14 @@
+<div class="avatar" [ngClass]="'avatar-' + size">
+  <img 
+    *ngIf="src" 
+    [src]="src" 
+    [alt]="alt"
+    (error)="onImageError($event)"
+    class="avatar-image">
+  
+  <div 
+    *ngIf="showInitials" 
+    class="avatar-initials">
+    {{ displayInitials }}
+  </div>
+</div>

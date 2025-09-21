@@ -1,0 +1,13 @@
+<button 
+  [type]="type"
+  [disabled]="disabled || loading"
+  [class]="buttonClasses"
+  (click)="onClick($event)">
+  @if (loading) {
+    <span class="btn__spinner">⏳</span>
+  }
+  <span [class.btn__text--hidden]="loading">
+    {{ text }}
+    <ng-content></ng-content>
+  </span>
+</button>

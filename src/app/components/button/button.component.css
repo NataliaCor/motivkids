@@ -1,0 +1,165 @@
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 3px rgba(238, 201, 37, 0.3);
+}
+
+/* Button variants */
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  border-color: var(--color-primary);
+}
+
+.btn--primary:hover:not(.btn--disabled) {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(238, 201, 37, 0.3);
+}
+
+.btn--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-black);
+  border-color: var(--color-secondary);
+}
+
+.btn--secondary:hover:not(.btn--disabled) {
+  background-color: #8dd4d6;
+  border-color: #8dd4d6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(159, 223, 224, 0.3);
+}
+
+.btn--accent {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.btn--accent:hover:not(.btn--disabled) {
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(106, 149, 31, 0.3);
+}
+
+.btn--turquoise {
+  background-color: #9FDFE0;
+  color: #0F4A4B;
+  border-color: #9FDFE0;
+}
+
+.btn--turquoise:hover:not(.btn--disabled) {
+  background-color: #7FD5D7;
+  border-color: #7FD5D7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(159, 223, 224, 0.3);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn--outline:hover:not(.btn--disabled) {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(106, 149, 31, 0.2);
+}
+
+/* Button sizes */
+.btn--small {
+  padding: 8px 16px;
+  font-size: 14px;
+  min-height: 32px;
+}
+
+.btn--medium {
+  padding: 12px 24px;
+  font-size: 16px;
+  min-height: 44px;
+}
+
+.btn--large {
+  padding: 16px 32px;
+  font-size: 18px;
+  min-height: 56px;
+}
+
+/* Button states */
+.btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+/* Active state */
+.btn:active:not(.btn--disabled) {
+  transform: translateY(0);
+}
+
+/* Ripple effect on click */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+  transform: translate(-50%, -50%);
+}
+
+.btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Loading state styles */
+.btn--loading {
+  position: relative;
+  cursor: wait;
+}
+
+.btn__spinner {
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+.btn__text--hidden {
+  opacity: 0.7;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

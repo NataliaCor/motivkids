@@ -1,0 +1,28 @@
+<div class="search-input" 
+     [class.search-input--small]="size === 'small'"
+     [class.search-input--medium]="size === 'medium'"
+     [class.search-input--large]="size === 'large'"
+     [class.search-input--disabled]="disabled">
+  
+  <div class="search-input__icon">
+    🔍
+  </div>
+  
+  <input 
+    class="search-input__field"
+    type="text"
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onInput($event)"
+    (keyup)="onKeyUp($event)">
+  
+  @if (hasValue && !disabled) {
+    <button 
+      class="search-input__clear"
+      type="button"
+      (click)="onClear()">
+      ✕
+    </button>
+  }
+</div>

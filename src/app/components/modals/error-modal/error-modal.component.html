@@ -1,0 +1,45 @@
+<app-modal
+  [isOpen]="isOpen"
+  [config]="modalConfig"
+  [header]="modalHeader"
+  [actions]="modalActions"
+  (modalClose)="onClose()"
+  customClass="error-modal">
+  
+  <div class="error-content">
+    <!-- Error Icon -->
+    <div class="error-icon">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="32" fill="#DC2626"/>
+        <path d="M24 24L40 40M40 24L24 40" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    
+    <!-- Error Message -->
+    <div class="error-message">
+      <p>{{ message }}</p>
+    </div>
+
+    <!-- Error Details Toggle -->
+    <div *ngIf="details" class="error-details-section">
+      <button 
+        class="details-toggle"
+        (click)="toggleDetails()"
+        type="button">
+        {{ showDetails ? 'Ocultar detalles' : 'Ver detalles' }}
+        <svg 
+          width="16" 
+          height="16" 
+          viewBox="0 0 16 16" 
+          fill="none" 
+          [class.rotated]="showDetails">
+          <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      
+      <div *ngIf="showDetails" class="error-details">
+        <pre>{{ details }}</pre>
+      </div>
+    </div>
+  </div>
+</app-modal>

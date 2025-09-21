@@ -1,0 +1,39 @@
+<nav class="navbar">
+  <div class="navbar__container">
+    <!-- Logo Section -->
+    <div class="navbar__brand">
+      <h1 class="navbar__logo">motivkids</h1>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="navbar__nav">
+      @for (item of navItems; track item.label) {
+        <button 
+          class="navbar__link"
+          [class.navbar__link--active]="item.active"
+          (click)="onNavItemClick(item)">
+          {{ item.label }}
+        </button>
+      }
+    </div>
+
+    <!-- User Profile Section -->
+    <div class="navbar__user">
+      <!-- Notifications -->
+      <div class="navbar__notifications">
+        <button class="navbar__notification-btn">
+          <span class="navbar__notification-icon">🔔</span>
+          @if (notificationCount > 0) {
+            <span class="navbar__notification-badge">{{ notificationCount }}</span>
+          }
+        </button>
+      </div>
+
+      <!-- User Profile -->
+      <div class="navbar__profile">
+        <div class="navbar__avatar">{{ userAvatar }}</div>
+        <span class="navbar__username">{{ userName }}</span>
+      </div>
+    </div>
+  </div>
+</nav>

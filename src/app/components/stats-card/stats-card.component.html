@@ -1,0 +1,39 @@
+<app-card [hover]="true" padding="medium" shadow="small">
+  <div class="stats-card">
+    <div class="stats-card__header">
+      <div class="stats-card__icon" 
+           [class.stats-card__icon--primary]="iconColor === 'primary'"
+           [class.stats-card__icon--secondary]="iconColor === 'secondary'"
+           [class.stats-card__icon--accent]="iconColor === 'accent'"
+           [class.stats-card__icon--success]="iconColor === 'success'"
+           [class.stats-card__icon--warning]="iconColor === 'warning'"
+           [class.stats-card__icon--error]="iconColor === 'error'">
+        {{ icon }}
+      </div>
+      @if (trend) {
+        <div class="stats-card__trend"
+             [class.stats-card__trend--up]="trend === 'up'"
+             [class.stats-card__trend--down]="trend === 'down'"
+             [class.stats-card__trend--stable]="trend === 'stable'">
+          @if (trend === 'up') {
+            <span class="trend-arrow">▲</span>
+          }
+          @if (trend === 'down') {
+            <span class="trend-arrow">▼</span>
+          }
+          @if (trend === 'stable') {
+            <span class="trend-arrow">▶</span>
+          }
+          @if (trendValue) {
+            <span class="trend-value">{{ trendValue }}</span>
+          }
+        </div>
+      }
+    </div>
+    
+    <div class="stats-card__content">
+      <div class="stats-card__value">{{ value }}</div>
+      <div class="stats-card__title">{{ title }}</div>
+    </div>
+  </div>
+</app-card>

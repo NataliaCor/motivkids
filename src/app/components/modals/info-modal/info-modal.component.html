@@ -1,0 +1,31 @@
+<app-modal
+  [isOpen]="isOpen"
+  [config]="modalConfig"
+  [header]="modalHeader"
+  [actions]="modalActions"
+  (modalClose)="onClose()"
+  customClass="info-modal">
+  
+  <div class="info-content">
+    <!-- Info Icon -->
+    <div *ngIf="showIcon" class="info-icon">
+      <div *ngIf="icon; else defaultIcon" [innerHTML]="icon"></div>
+      <ng-template #defaultIcon>
+        <div [innerHTML]="getDefaultIcon()"></div>
+      </ng-template>
+    </div>
+    
+    <!-- Info Message -->
+    <div *ngIf="message" class="info-message">
+      <p>{{ message }}</p>
+    </div>
+
+    <!-- Info Content (HTML) -->
+    <div *ngIf="content" class="info-content-html" [innerHTML]="content"></div>
+
+    <!-- Custom Content Projection -->
+    <div class="info-custom-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</app-modal>

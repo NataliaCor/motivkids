@@ -1,0 +1,85 @@
+<div class="activities-page">
+  <!-- Navigation Bar -->
+  <app-navbar 
+    [userName]="userName"
+    [userAvatar]="userAvatar"
+    [notificationCount]="notificationCount"
+    [messageCount]="messageCount">
+  </app-navbar>
+
+  <!-- Main Content -->
+  <main class="activities-main">
+    <div class="activities-container">
+      
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">Agregar Nueva Actividad</h1>
+        
+        <!-- Search Field -->
+        <div class="search-section">
+          <app-search-input
+            placeholder="Buscar actividades..."
+            [value]="searchValue"
+            size="large"
+            (valueChange)="onSearch($event)">
+          </app-search-input>
+        </div>
+      </div>
+
+      <!-- Suggestions Section -->
+      @if (!isSearching) {
+        <section class="suggestions-section">
+          <h2 class="section-title">Sugerencias para ti</h2>
+          
+          <div class="suggestions-grid">
+            @for (activity of suggestedActivities; track activity.id) {
+              <app-activity-card
+                [activity]="activity"
+                variant="suggestion"
+                (add)="onAddActivity($event)">
+              </app-activity-card>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- Search Results Section -->
+      @if (isSearching) {
+        <section class="results-section">
+          <h2 class="section-title">
+            Resultados de búsqueda
+            @if (searchResults.length > 0) {
+              <span class="results-count">({{ searchResults.length }} encontrados)</span>
+            }
+          </h2>
+          
+          @if (searchResults.length > 0) {
+            <div class="results-list">
+              @for (activity of searchResults; track activity.id) {
+                <app-activity-card
+                  [activity]="activity"
+                  variant="result"
+                  (add)="onAddActivity($event)">
+                </app-activity-card>
+              }
+            </div>
+          } @else {
+            <div class="empty-results">
+              <div class="empty-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="M21 21l-4.35-4.35"/>
+                </svg>
+              </div>
+              <h3 class="empty-title">No se encontraron actividades</h3>
+              <p class="empty-description">
+                Intenta con otros términos de búsqueda o explora nuestras sugerencias.
+              </p>
+            </div>
+          }
+        </section>
+      }
+
+    </div>
+  </main>
+</div>

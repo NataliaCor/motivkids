@@ -1,0 +1,62 @@
+<div class="message-item" [ngClass]="{ 'unread': !message.isRead }">
+  <!-- Avatar and Content Section -->
+  <div class="message-content">
+    <!-- Avatar -->
+    <div class="avatar-section">
+      <app-avatar
+        [src]="message.senderAvatar"
+        [name]="message.senderName"
+        [alt]="message.senderName"
+        size="medium">
+      </app-avatar>
+    </div>
+
+    <!-- Message Details -->
+    <div class="message-details">
+      <!-- Sender Name and Relationship Badge -->
+      <div class="message-header">
+        <h3 class="sender-name">{{ message.senderName }}</h3>
+        <app-relationship-badge
+          [type]="message.relationshipType"
+          size="small">
+        </app-relationship-badge>
+      </div>
+
+      <!-- Message Content -->
+      <p class="message-text">{{ message.message }}</p>
+    </div>
+  </div>
+
+  <!-- Time and Actions Section -->
+  <div class="message-meta">
+    <!-- Timestamp -->
+    <div class="timestamp">
+      <span class="time-ago">{{ message.timeAgo }}</span>
+      <span class="exact-time">{{ message.timestamp }}</span>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button 
+        class="action-btn edit-btn"
+        (click)="onEdit()"
+        title="Editar mensaje">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m18 2 4 4-14 14H4v-4z"/>
+          <path d="m14.5 5.5 4 4"/>
+        </svg>
+      </button>
+
+      <button 
+        class="action-btn delete-btn"
+        (click)="onDelete()"
+        title="Eliminar mensaje">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18"/>
+          <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+          <path d="M8 6V4c0-1 1-2 2-2h4c0 1 1 2 2 2v2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

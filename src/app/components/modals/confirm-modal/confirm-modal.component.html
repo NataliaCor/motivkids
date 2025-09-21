@@ -1,0 +1,18 @@
+<app-modal
+  [isOpen]="isOpen"
+  [config]="modalConfig"
+  [header]="modalHeader"
+  [actions]="modalActions"
+  (modalClose)="onClose()"
+  [customClass]="'confirm-modal confirm-modal--' + type">
+  
+  <div class="confirm-content">
+    <!-- Confirm Icon -->
+    <div class="confirm-icon" [innerHTML]="getIconSvg()"></div>
+    
+    <!-- Confirm Message -->
+    <div class="confirm-message">
+      <p>{{ message }}</p>
+    </div>
+  </div>
+</app-modal>

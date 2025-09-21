@@ -1,0 +1,222 @@
+/* Design System Styles */
+.design-system {
+  min-height: 100vh;
+  background-color: var(--color-gray-light);
+}
+
+.design-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: var(--color-black);
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.design-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.design-header p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.design-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.design-section {
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.design-section:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.design-section h2 {
+  color: var(--color-accent);
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 32px 0;
+  padding-bottom: 16px;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.component-group {
+  margin-bottom: 32px;
+}
+
+.component-group:last-child {
+  margin-bottom: 0;
+}
+
+.component-group h3 {
+  color: var(--color-accent);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+.component-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  background-color: var(--color-gray-light);
+  border-radius: 12px;
+  border: 2px dashed var(--color-primary);
+}
+
+/* Color Palette Styles */
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.color-card {
+  background: var(--color-white);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.color-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.color-swatch {
+  width: 100%;
+  height: 80px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 2px solid var(--color-gray-light);
+}
+
+.color-card.primary .color-swatch {
+  background-color: var(--color-primary);
+}
+
+.color-card.primary-light .color-swatch {
+  background-color: var(--color-primary-light);
+}
+
+.color-card.secondary .color-swatch {
+  background-color: var(--color-secondary);
+}
+
+.color-card.accent .color-swatch {
+  background-color: var(--color-accent);
+}
+
+.color-card.accent-light .color-swatch {
+  background-color: var(--color-accent-light);
+}
+
+.color-info h3 {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.color-info p {
+  color: var(--color-gray-dark);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 4px 8px;
+  background-color: var(--color-gray-light);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Modal Content Styles */
+.modal-content {
+  padding: 20px 0;
+}
+
+.modal-content p {
+  color: var(--color-gray-dark);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.modal-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .design-header {
+    padding: 30px 20px;
+  }
+  
+  .design-header h1 {
+    font-size: 2rem;
+  }
+  
+  .design-content {
+    padding: 20px 10px;
+  }
+  
+  .design-section {
+    padding: 24px 20px;
+    margin-bottom: 24px;
+  }
+  
+  .design-section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .component-demo {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .color-palette {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .design-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .design-section {
+    padding: 20px 16px;
+  }
+  
+  .design-section h2 {
+    font-size: 1.4rem;
+  }
+  
+  .component-demo {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .color-palette {
+    grid-template-columns: 1fr;
+  }
+}

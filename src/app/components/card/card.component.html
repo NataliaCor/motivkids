@@ -1,0 +1,31 @@
+<div class="card" 
+     [class.card--small-padding]="padding === 'small'"
+     [class.card--medium-padding]="padding === 'medium'"
+     [class.card--large-padding]="padding === 'large'"
+     [class.card--no-shadow]="shadow === 'none'"
+     [class.card--small-shadow]="shadow === 'small'"
+     [class.card--medium-shadow]="shadow === 'medium'"
+     [class.card--large-shadow]="shadow === 'large'"
+     [class.card--small-radius]="borderRadius === 'small'"
+     [class.card--medium-radius]="borderRadius === 'medium'"
+     [class.card--large-radius]="borderRadius === 'large'"
+     [class.card--white-bg]="background === 'white'"
+     [class.card--gray-bg]="background === 'gray'"
+     [class.card--transparent-bg]="background === 'transparent'"
+     [class.card--hover]="hover">
+  
+  @if (title || subtitle) {
+    <header class="card__header">
+      @if (title) {
+        <h3 class="card__title">{{ title }}</h3>
+      }
+      @if (subtitle) {
+        <p class="card__subtitle">{{ subtitle }}</p>
+      }
+    </header>
+  }
+  
+  <div class="card__content">
+    <ng-content></ng-content>
+  </div>
+</div>
