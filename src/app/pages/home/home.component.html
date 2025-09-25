@@ -13,94 +13,118 @@
       
       <!-- Stats Cards Section -->
       <section class="dashboard__stats">
-        <app-stats-card
-          title="Alarmas Activas"
-          value="12"
-          icon="⚠️"
-          iconColor="warning"
-          trend="up">
-        </app-stats-card>
+        <div class="stats-card stats-card--warning">
+          <div class="stats-card__content">
+            <div class="stats-card__title">Alarmas Activas</div>
+            <div class="stats-card__value">12</div>
+          </div>
+          <div class="stats-card__icon stats-card__icon--warning">
+            <i class="bi bi-bell"></i>
+          </div>
+        </div>
         
-        <app-stats-card
-          title="Mensajes Enviados"
-          value="847"
-          icon="✈️"
-          iconColor="success"
-          trend="up">
-        </app-stats-card>
+        <div class="stats-card stats-card--success">
+          <div class="stats-card__content">
+            <div class="stats-card__title">Mensajes Enviados</div>
+            <div class="stats-card__value">27</div>
+          </div>
+          <div class="stats-card__icon stats-card__icon--success">
+            <i class="bi bi-send"></i>
+          </div>
+        </div>
         
-        <app-stats-card
-          title="Actividades Elegidas"
-          value="25"
-          icon="✅"
-          iconColor="accent"
-          trend="stable">
-        </app-stats-card>
+        <div class="stats-card stats-card--accent">
+          <div class="stats-card__content">
+            <div class="stats-card__title">Actividades Elegidas</div>
+            <div class="stats-card__value">25</div>
+          </div>
+          <div class="stats-card__icon stats-card__icon--accent">
+            <i class="bi bi-check-circle"></i>
+          </div>
+        </div>
       </section>
 
       <!-- Main Content Grid -->
       <section class="dashboard__content">
         
         <!-- Emotions History Chart -->
-        <app-card 
-          title="Historial de emociones"
-          padding="large"
-          shadow="medium"
-          [hover]="true"
-          class="dashboard__chart-card">
-          <div class="chart-container">
-            <div class="chart-placeholder">
-              <div class="chart-legend">
-                <div class="chart-legend-item">
-                  <span class="chart-legend-color chart-legend-color--mood"></span>
-                  <span>Estado de ánimo</span>
-                </div>
-                <div class="chart-legend-item">
-                  <span class="chart-legend-color chart-legend-color--energy"></span>
-                  <span>Energía</span>
-                </div>
+        <div class="dashboard__chart">
+          <h3 class="chart__title">Historial de emociones</h3>
+          <div class="chart-container">           
+            
+            <!-- Chart Area -->
+            <div class="chart-area">
+              <div class="chart-y-axis">
+                <span>10</span>
+                <span>8</span>
+                <span>6</span>
+                <span>4</span>
+                <span>2</span>
+                <span>0</span>
               </div>
-              
-              <!-- Simple Chart Representation -->
-              <div class="simple-chart">
-                <div class="chart-y-axis">
-                  <span>10</span>
-                  <span>8</span>
-                  <span>6</span>
-                  <span>4</span>
-                  <span>2</span>
-                  <span>0</span>
-                </div>
-                <div class="chart-content">
-                  @for (day of chartData.labels; track day; let i = $index) {
-                    <div class="chart-day">
-                      <div class="chart-bars">
-                        <div class="chart-bar chart-bar--mood" 
-                             [style.height.%]="chartData.mood[i] * 10"></div>
-                        <div class="chart-bar chart-bar--energy" 
-                             [style.height.%]="chartData.energy[i] * 10"></div>
-                      </div>
-                      <span class="chart-day-label">{{ day }}</span>
-                    </div>
-                  }
-                </div>
+              <div class="chart-content">
+                <!-- SVG para las líneas -->
+                <svg class="chart-lines" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Línea de estado de ánimo -->
+                  <polyline 
+                    points="40,160 100,140 160,180 220,100 280,140 340,80 400,100"
+                    fill="none" 
+                    stroke="#6A951F" 
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+                  <!-- Línea de energía -->
+                  <polyline 
+                    points="60,180 120,160 180,200 240,120 300,160 360,100 420,120"
+                    fill="none" 
+                    stroke="#EEC925" 
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Chart X-axis (days) -->
+            <div class="chart-x-axis">
+              <div class="chart-x-axis-spacer"></div>
+              <div class="chart-x-labels">
+                @for (day of chartData.labels; track day; let i = $index) {
+                  <div class="chart-day">
+                    <span class="chart-day-label">{{ day }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+            <!-- Chart Legend -->
+            <div class="chart-legend">
+              <div class="chart-legend-item">
+                <span class="chart-legend-dot chart-legend-dot--mood"></span>
+                <span>Estado de ánimo</span>
+              </div>
+              <div class="chart-legend-item">
+                <span class="chart-legend-dot chart-legend-dot--energy"></span>
+                <span>Energía</span>
               </div>
             </div>
           </div>
-        </app-card>
+        </div>
 
         <!-- Recent Activities -->
-        <app-card 
-          title="Actividades Recientes"
-          padding="large"
-          shadow="medium"
-          [hover]="true"
-          class="dashboard__activities-card">
-          <app-activity-list 
-            [activities]="recentActivities"
-            [maxItems]="5">
-          </app-activity-list>
-        </app-card>
+        <div class="dashboard__activities">
+          <h3 class="activities__title">Actividades Recientes</h3>
+          <div class="activities-list">
+            @for (activity of recentActivities; track activity.id) {
+              <div class="activity-item">
+                <div class="activity-item__icon">
+                  <i [class]="activity.icon"></i>
+                </div>
+                <div class="activity-item__content">
+                  <div class="activity-item__title">{{ activity.title }}</div>
+                  <div class="activity-item__subtitle">{{ activity.subtitle }}</div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
 
       </section>
     </div>

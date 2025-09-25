@@ -4,7 +4,7 @@
   background: var(--color-white);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* Removed box-shadow to match clean design */
 }
 
 /* Loading State */
@@ -63,16 +63,17 @@
 
 /* Header Styles */
 .data-table__header {
-  background: var(--color-gray-light);
+  background: #F9FAFB; /* Light gray background for headers */
 }
 
 .data-table__header-cell {
   padding: 16px 12px;
   text-align: left;
-  font-weight: 600;
-  color: var(--color-accent);
-  border-bottom: 1px solid var(--color-gray-light);
+  font-weight: 500;
+  color: #6B7280; /* Gray color for headers */
+  border-bottom: 1px solid #E5E7EB; /* Add border back */
   white-space: nowrap;
+  font-size: 0.875rem;
 }
 
 .data-table__header-cell--sortable {
@@ -113,11 +114,11 @@
 
 .data-table__row {
   transition: background-color 0.3s ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #F3F4F6; /* Add light border between rows */
 }
 
 .data-table__row:hover {
-  background-color: rgba(238, 201, 37, 0.05);
+  background-color: rgba(249, 250, 251, 0.8);
 }
 
 .data-table__row:last-child {
@@ -126,8 +127,10 @@
 
 .data-table__cell {
   padding: 16px 12px;
-  color: var(--color-gray-dark);
+  color: #000000; /* Black text for better readability */
   vertical-align: middle;
+  font-size: 0.875rem;
+  font-weight: 400;
 }
 
 .data-table__cell--actions {
@@ -164,11 +167,11 @@
 
 /* Action Button Color Variants */
 .action-button--primary {
-  color: var(--color-primary);
+  color: #2563eb; /* Blue color for edit */
 }
 
 .action-button--primary:hover {
-  background-color: rgba(238, 201, 37, 0.1);
+  background-color: rgba(37, 99, 235, 0.1);
 }
 
 .action-button--secondary {
@@ -196,7 +199,7 @@
 }
 
 .action-button--error {
-  color: #ef4444;
+  color: #ef4444; /* Red color for delete */
 }
 
 .action-button--error:hover {

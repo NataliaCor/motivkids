@@ -1,14 +1,15 @@
+/* ===== BASE STYLES ===== */
 .messages-page {
   min-height: 100vh;
-  background: #FAFAFA;
+  background: #F5F5F5;
   display: flex;
   flex-direction: column;
 }
 
 .messages-main {
   flex: 1;
-  padding: 1rem;
-  margin-top: 70px; /* Account for fixed navbar */
+  padding: 1.5rem;
+  margin-top: 70px;
 }
 
 .messages-container {
@@ -19,46 +20,248 @@
 
 .messages-card {
   width: 100%;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
 }
 
-/* Card Header */
+/* ===== HEADER SECTION ===== */
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 24px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #F3F4F6;
   gap: 16px;
 }
 
 .header-content {
   flex: 1;
+  min-width: 200px;
 }
 
 .page-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #1F2937;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-black);
   margin: 0 0 8px 0;
   line-height: 1.2;
 }
 
 .page-subtitle {
-  font-size: 16px;
-  color: #6B7280;
+  font-size: 0.875rem;
+  color: var(--color-gray-dark);
   margin: 0;
   line-height: 1.4;
 }
 
-/* Filters Section */
-.filters-section {
+.search-container {
+  flex-shrink: 0;
+  width: 240px;
+}
+
+.filter-container {
+  flex-shrink: 0;
+}
+
+.message-filter:hover {
+  border-color: var(--color-primary);
+}
+
+.message-filter:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* ===== COMPONENT OVERRIDES ===== */
+.search-container,
+.filter-container,
+.card-header > app-button {
+  height: 42px;
   display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
   align-items: center;
+}
+
+.search-container ::ng-deep app-search-input,
+.search-container ::ng-deep app-search-input > div,
+.search-container ::ng-deep app-search-input input {
+  height: 42px !important;
+  min-height: 42px !important;
+  max-height: 42px !important;
+  box-sizing: border-box !important;
+  padding: 0 16px !important;
+  font-size: 0.875rem !important;
+  line-height: 1.2 !important;
+}
+
+.message-filter {
+  padding: 0 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: white;
+  color: #374151;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 140px;
+  height: 42px !important;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.card-header ::ng-deep app-button,
+.card-header ::ng-deep app-button > button,
+.card-header ::ng-deep app-button .button {
+  height: 42px !important;
+  min-height: 42px !important;
+  max-height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 16px !important;
+  font-size: 0.875rem !important;
+  line-height: 1.2 !important;
+  box-sizing: border-box !important;
+}
+
+/* ===== MESSAGES LIST ===== */
+.messages-list {
+  background: transparent;
+  border-radius: 0;
+  border: none;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #F3F4F6;
+  transition: background-color 0.2s;
+  margin: 0 0 12px 0;
+  background: white;
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message-item:last-child {
+  margin-bottom: 0;
+}
+
+.message-item:hover {
+  background-color: #F9FAFB;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.message-content {
+  flex: 1;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sender-name {
+  font-weight: 600;
+  color: #111827;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.message-text {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.message-avatar {
+  flex-shrink: 0;
+}
+
+.message-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.timestamp {
+  color: #9CA3AF;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #F3F4F6;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #6B7280;
+  font-size: 0.75rem;
+}
+
+.action-btn:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #3B82F6;
+}
+
+.delete-btn:hover {
+  background: #EF4444;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.empty-icon {
+  color: #D1D5DB;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.empty-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 8px 0;
+}
+
+.empty-description {
+  color: #6B7280;
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .search-container {

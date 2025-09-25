@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { SearchInputComponent } from '../../components/search-input/search-input.component';
 import { ActivityCardComponent, Activity } from '../../components/activity-card/activity-card.component';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-activities',
@@ -10,7 +11,8 @@ import { ActivityCardComponent, Activity } from '../../components/activity-card/
     CommonModule,
     NavbarComponent,
     SearchInputComponent,
-    ActivityCardComponent
+    ActivityCardComponent,
+    ButtonComponent
   ],
   templateUrl: './activities.component.html',
   styleUrl: './activities.component.css'
@@ -18,7 +20,7 @@ import { ActivityCardComponent, Activity } from '../../components/activity-card/
 export class ActivitiesComponent implements OnInit {
   // Navbar data
   userName = 'Ana García';
-  userAvatar = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ana';
+  userAvatar = 'AG';
   notificationCount = 3;
   messageCount = 7;
 
@@ -39,8 +41,9 @@ export class ActivitiesComponent implements OnInit {
       {
         id: '1',
         title: 'Meditación guiada',
-        description: 'Relájate con ejercicios de respiración y mindfulness para niños',
+        description: 'Sesión de 10 minutos para relajar tu mente y reducir el estrés',
         icon: '🧘‍♀️',
+        iconClass: 'bi bi-heart-pulse',
         category: 'Bienestar',
         duration: '10 min',
         difficulty: 'easy'
@@ -48,28 +51,65 @@ export class ActivitiesComponent implements OnInit {
       {
         id: '2',
         title: 'Lectura diaria',
-        description: 'Desarrolla el hábito de leer un cuento antes de dormir',
+        description: 'Lee 20 páginas de tu libro favorito para expandir tu conocimiento',
         icon: '📚',
+        iconClass: 'bi bi-book',
         category: 'Educación',
         duration: '15 min',
         difficulty: 'easy'
       },
       {
         id: '3',
-        title: 'Ejercicio matutino',
-        description: 'Rutina de ejercicios suaves para empezar el día con energía',
-        icon: '🏃‍♂️',
-        category: 'Deporte',
-        duration: '20 min',
-        difficulty: 'medium'
+        title: 'Dibujo creativo',
+        description: 'Expresa tu creatividad con 30 minutos de dibujo libre',
+        icon: '🎨',
+        iconClass: 'bi bi-palette',
+        category: 'Arte',
+        duration: '30 min',
+        difficulty: 'easy'
       },
       {
         id: '4',
-        title: 'Arte creativo',
-        description: 'Dibuja, pinta o crea manualidades para expresar tu creatividad',
-        icon: '🎨',
-        category: 'Arte',
+        title: 'Ejercicio matutino',
+        description: 'Rutina de 15 minutos para activar tu cuerpo por la mañana',
+        icon: '🏃‍♂️',
+        iconClass: 'bi bi-person-plus',
+        category: 'Deporte',
+        duration: '20 min',
+        difficulty: 'medium'
+      }
+    ];
+
+    // Search results - activities found through search
+    this.searchResults = [
+      {
+        id: '5',
+        title: 'Escuchar música relajante',
+        description: 'Disfruta de 25 minutos de música instrumental para relajarte',
+        icon: '🎵',
+        iconClass: 'bi bi-music-note-beamed',
+        category: 'Bienestar',
+        duration: '25 min',
+        difficulty: 'easy'
+      },
+      {
+        id: '6',
+        title: 'Caminar al aire libre',
+        description: 'Una caminata de 30 minutos para conectar con la naturaleza',
+        icon: '🚶‍♂️',
+        iconClass: 'bi bi-tree',
+        category: 'Naturaleza',
         duration: '30 min',
+        difficulty: 'easy'
+      },
+      {
+        id: '7',
+        title: 'Escribir en diario',
+        description: 'Reflexiona sobre tu día escribiendo tus pensamientos',
+        icon: '✍️',
+        iconClass: 'bi bi-pencil-square',
+        category: 'Reflexión',
+        duration: '15 min',
         difficulty: 'easy'
       }
     ];

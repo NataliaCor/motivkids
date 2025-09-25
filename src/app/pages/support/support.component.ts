@@ -18,7 +18,7 @@ import { SupportCardComponent, SupportItem, ContactOption } from '../../componen
 export class SupportComponent implements OnInit {
   // Navbar data
   userName = 'Ana García';
-  userAvatar = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ana';
+  userAvatar = 'AG';
   notificationCount = 3;
   messageCount = 7;
 

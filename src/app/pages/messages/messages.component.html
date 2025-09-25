@@ -11,58 +11,87 @@
   <main class="messages-main">
     <div class="messages-container">
       
-      <!-- Messages Management Card -->
-      <app-card 
-        padding="large"
-        shadow="medium"
-        class="messages-card">
-        
-        <!-- Card Header -->
-        <div class="card-header">
-          <div class="header-content">
-            <h1 class="page-title">Mensajes</h1>
-            <p class="page-subtitle">Gestiona todos tus mensajes para tu pequeño</p>
-          </div>
-          <app-button
-            text="+ Agregar mensaje"
-            variant="accent"
+      <!-- Card Header -->
+      <div class="card-header">
+        <div class="header-content">
+          <h1 class="page-title">Mensajes</h1>
+          <p class="page-subtitle">Gestiona todos tus mensajes para tu pequeño</p>
+        </div>
+        <div class="search-container">
+          <app-search-input
+            placeholder="Buscar mensajes..."
+            [value]="searchValue"
             size="medium"
-            (buttonClick)="onAddMessage()">
-          </app-button>
+            (valueChange)="onSearch($event)">
+          </app-search-input>
         </div>
-
-        <!-- Filters Section -->
-        <div class="filters-section">
-          <div class="search-container">
-            <app-search-input
-              placeholder="Buscar mensajes..."
-              [value]="searchValue"
-              size="medium"
-              (valueChange)="onSearch($event)">
-            </app-search-input>
-          </div>
-          
-          <div class="filter-container">
-            <select 
-              class="message-filter"
-              [value]="selectedFilter"
-              (change)="onFilterChange($event)">
-              @for (option of filterOptions; track option.value) {
-                <option [value]="option.value">{{ option.label }}</option>
-              }
-            </select>
-          </div>
+        
+        <div class="filter-container">
+          <select 
+            class="message-filter"
+            [value]="selectedFilter"
+            (change)="onFilterChange($event)">
+            @for (option of filterOptions; track option.value) {
+              <option [value]="option.value">{{ option.label }}</option>
+            }
+          </select>
         </div>
-
-        <!-- Messages List -->
+        <app-button
+          text="+ Agregar mensaje"
+          variant="accent"
+          size="medium"
+          (buttonClick)="onAddMessage()">
+        </app-button>
+      </div>
+      
+      <!-- Messages List -->
         <div class="messages-list">
           @if (filteredMessages.length > 0) {
             @for (message of filteredMessages; track message.id) {
-              <app-message-item
-                [message]="message"
-                (edit)="onEditMessage($event)"
-                (delete)="onDeleteMessage($event)">
-              </app-message-item>
+              <div class="message-item" [class.unread]="!message.isRead">
+                <!-- Avatar -->
+                <div class="message-avatar">
+                  <app-avatar
+                    [src]="message.senderAvatar"
+                    [name]="message.senderName"
+                    [alt]="message.senderName"
+                    size="medium">
+                  </app-avatar>
+                </div>
+
+                <!-- Message Content -->
+                <div class="message-content">
+                  <div class="message-header">
+                    <h3 class="sender-name">{{ message.senderName }}</h3>
+                    <app-relationship-badge
+                      [type]="message.relationshipType"
+                      size="small">
+                    </app-relationship-badge>
+                  </div>
+                  <p class="message-text">{{ message.message }}</p>
+                </div>
+
+                <!-- Time and Actions -->
+                <div class="message-meta">
+                  <div class="timestamp">
+                    <span class="time-ago">{{ message.timeAgo }}</span>
+                  </div>
+                  <div class="action-buttons">
+                    <button 
+                      class="action-btn edit-btn"
+                      (click)="onEditMessage(message)"
+                      title="Editar mensaje">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button 
+                      class="action-btn delete-btn"
+                      (click)="onDeleteMessage(message)"
+                      title="Eliminar mensaje">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
             }
           } @else {
             <div class="empty-state">
@@ -86,7 +115,15 @@
           }
         </div>
 
-      </app-card>
+        <!-- Message Modal -->
+        <app-message-modal
+          [isOpen]="isModalOpen"
+          [mode]="modalMode"
+          [initialData]="initialMessageData"
+          (close)="onModalClose()"
+          (save)="onMessageSave($event)">
+        </app-message-modal>
+
     </div>
   </main>
 </div>

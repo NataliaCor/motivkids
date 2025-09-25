@@ -75,7 +75,7 @@
                         [class.action-button--error]="action.color === 'error'"
                         [title]="action.label"
                         (click)="onActionClick(action, item, $event)">
-                        {{ action.icon }}
+                        <i [class]="action.icon"></i>
                       </button>
                     }
                   </div>

@@ -7,6 +7,7 @@ export interface Activity {
   title: string;
   description: string;
   icon: string;
+  iconClass?: string;
   category: string;
   duration?: string;
   difficulty?: 'easy' | 'medium' | 'hard';

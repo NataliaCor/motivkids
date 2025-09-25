@@ -10,7 +10,6 @@
       @for (item of navItems; track item.label) {
         <button 
           class="navbar__link"
-          [class.navbar__link--active]="item.active"
           (click)="onNavItemClick(item)">
           {{ item.label }}
         </button>
@@ -22,7 +21,7 @@
       <!-- Notifications -->
       <div class="navbar__notifications">
         <button class="navbar__notification-btn">
-          <span class="navbar__notification-icon">🔔</span>
+          <i class="bi bi-bell navbar__notification-icon"></i>
           @if (notificationCount > 0) {
             <span class="navbar__notification-badge">{{ notificationCount }}</span>
           }

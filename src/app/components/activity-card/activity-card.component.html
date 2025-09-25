@@ -1,7 +1,11 @@
 <div class="activity-card" [ngClass]="'activity-card--' + variant">
   <!-- Activity Icon -->
   <div class="activity-icon">
-    <span class="icon">{{ activity.icon }}</span>
+    @if (activity.iconClass) {
+      <i [class]="activity.iconClass"></i>
+    } @else {
+      <span class="icon">{{ activity.icon }}</span>
+    }
   </div>
 
   <!-- Activity Content -->

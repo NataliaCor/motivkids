@@ -1,3 +1,4 @@
+/* ===== BASE STYLES ===== */
 .activities-page {
   min-height: 100vh;
   background: #FAFAFA;
@@ -17,43 +18,33 @@
   width: 100%;
 }
 
-/* Page Header */
+/* ===== HEADER SECTION ===== */
 .page-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .page-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #1F2937;
-  margin: 0 0 1.5rem 0;
-  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 0;
   letter-spacing: -0.02em;
 }
 
 .search-section {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 400px;
+  margin-bottom: 2rem;
 }
 
-/* Section Titles */
+/* ===== SECTION STYLES ===== */
 .section-title {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--color-black);
   margin: 0 0 1.5rem 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
-.results-count {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #9CA3AF;
-}
-
-/* Suggestions Section */
+/* ===== SUGGESTIONS SECTION ===== */
 .suggestions-section {
   margin-bottom: 3rem;
 }
@@ -65,7 +56,7 @@
   margin-top: 1.5rem;
 }
 
-/* Results Section */
+/* ===== RESULTS SECTION ===== */
 .results-section {
   margin-bottom: 2rem;
 }
@@ -76,50 +67,107 @@
   gap: 1rem;
 }
 
-/* Empty Results */
-.empty-results {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 1rem;
-  text-align: center;
-}
-
-.empty-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 1rem;
-  color: #D1D5DB;
+/* ===== RESULT ITEM STYLES ===== */
+.result-item {
   display: flex;
   align-items: center;
+  padding: 1rem;
+  background: var(--color-white);
+  border-radius: 8px;
+  gap: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.result-item:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Result Item Icon - Circular style like dashboard */
+.result-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  background-color: #E6F9F0;
 }
 
-.empty-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #6B7280;
-  margin: 0 0 0.5rem 0;
+.result-icon i {
+  font-size: 1.5rem;
+  color: var(--color-accent);
 }
 
-.empty-description {
+/* Content Styles */
+.result-content {
+  flex: 1;
+}
+
+.result-title {
   font-size: 1rem;
-  color: #9CA3AF;
-  margin: 0;
-  max-width: 400px;
-  line-height: 1.5;
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 0 0 0.25rem 0;
 }
 
-/* Responsive Design */
+.result-description {
+  font-size: 0.875rem;
+  color: var(--color-gray-dark);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.result-action {
+  flex-shrink: 0;
+}
+
+/* ===== ICON COLOR VARIATIONS ===== */
+.result-item:nth-child(1) .result-icon {
+  background-color: #E6F9F0;
+}
+
+.result-item:nth-child(1) .result-icon i {
+  color: var(--color-accent);
+}
+
+.result-item:nth-child(2) .result-icon {
+  background-color: #E8FEFE;
+}
+
+.result-item:nth-child(2) .result-icon i {
+  color: var(--color-secondary);
+}
+
+.result-item:nth-child(3) .result-icon {
+  background-color: #FEF3C7;
+}
+
+.result-item:nth-child(3) .result-icon i {
+  color: var(--color-primary);
+}
+
+.result-item:nth-child(4) .result-icon {
+  background-color: #F0F9F3;
+}
+
+.result-item:nth-child(4) .result-icon i {
+  color: var(--color-accent-light);
+}
+
+.result-item:nth-child(5) .result-icon {
+  background-color: #E6F9F0;
+}
+
+.result-item:nth-child(5) .result-icon i {
+  color: var(--color-accent);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   .activities-main {
     padding: 0.5rem;
-  }
-  
-  .page-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
   }
   
   .suggestions-grid {
@@ -127,9 +175,17 @@
     gap: 1rem;
   }
   
-  .section-title {
+  .result-item {
+    padding: 0.75rem;
+  }
+  
+  .result-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .result-icon i {
     font-size: 1.25rem;
-    margin-bottom: 1rem;
   }
 }
 
@@ -139,15 +195,15 @@
     margin-top: 60px;
   }
   
-  .page-title {
-    font-size: 1.75rem;
-  }
-  
   .page-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   
   .suggestions-section {
     margin-bottom: 2rem;
+  }
+  
+  .search-section {
+    max-width: 100%;
   }
 }

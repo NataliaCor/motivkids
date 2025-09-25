@@ -1,63 +1,64 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { StatsCardComponent } from '../../components/stats-card/stats-card.component';
-import { CardComponent } from '../../components/card/card.component';
-import { ActivityListComponent, Activity } from '../../components/activity-list/activity-list.component';
+import { CommonModule } from '@angular/common';
+
+interface DashboardActivity {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: string;
+  color: string;
+}
 
 @Component({
   selector: 'app-home',
-  imports: [NavbarComponent, StatsCardComponent, CardComponent, ActivityListComponent],
+  imports: [NavbarComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   // User data
-  userName = 'Cuenta';
-  userAvatar = '👨‍💻';
+  userName = 'Ana García';
+  userAvatar = 'AG';
   notificationCount = 3;
   messageCount = 2;
 
   // Recent activities data
-  recentActivities: Activity[] = [
+  recentActivities: DashboardActivity[] = [
     {
       id: '1',
-      name: 'Ejercicio matutino',
-      icon: '�‍♂️',
-      iconColor: 'success',
-      completedTime: 'Completado hace 2 horas',
-      description: 'Rutina de ejercicios de 30 minutos'
+      title: 'Ejercicio matutino',
+      subtitle: 'Completado hace 2 horas',
+      icon: 'bi bi-lightning',
+      color: '#6A951F'
     },
     {
       id: '2',
-      name: 'Lectura de relajación',
-      icon: '�',
-      iconColor: 'secondary',
-      completedTime: 'Completado hace 4 horas',
-      description: 'Sesión de lectura tranquila'
+      title: 'Lectura de relajación',
+      subtitle: 'Completado hace 4 horas',
+      icon: 'bi bi-book',
+      color: '#91B472'
     },
     {
       id: '3',
-      name: 'Meditación guiada',
-      icon: '🧘‍♀️',
-      iconColor: 'accent',
-      completedTime: 'Completado ayer',
-      description: 'Meditación de mindfulness'
+      title: 'Meditación guiada',
+      subtitle: 'Completado ayer',
+      icon: 'bi bi-circle',
+      color: '#EEC925'
     },
     {
       id: '4',
-      name: 'Arte terapéutico',
-      icon: '🎨',
-      iconColor: 'warning',
-      completedTime: 'Completado hace 2 días',
-      description: 'Sesión de arte creativo'
+      title: 'Arte terapéutico',
+      subtitle: 'Completado hace 2 días',
+      icon: 'bi bi-palette',
+      color: '#9FDFE0'
     },
     {
       id: '5',
-      name: 'Respiración consciente',
-      icon: '💨',
-      iconColor: 'primary',
-      completedTime: 'Completado hace 3 días',
-      description: 'Ejercicios de respiración'
+      title: 'Respiración consciente',
+      subtitle: 'Completado hace 3 días',
+      icon: 'bi bi-wind',
+      color: '#6A951F'
     }
   ];
 

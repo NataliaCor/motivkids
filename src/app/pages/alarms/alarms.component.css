@@ -35,9 +35,9 @@
 }
 
 .page-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
   margin: 0;
   letter-spacing: -0.02em;
 }
@@ -51,7 +51,7 @@
 }
 
 .search-container {
-  flex: 1;
+  flex: 0 0 400px; /* Fixed width instead of flex: 1 */
   min-width: 300px;
 }
 
@@ -62,7 +62,7 @@
 .status-filter {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid #e5e7eb;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
   background: white;
   font-size: 0.875rem;
@@ -70,6 +70,7 @@
   transition: all 0.2s ease;
   outline: none;
   cursor: pointer;
+  font-weight: 400;
 }
 
 .status-filter:focus {
@@ -85,7 +86,7 @@
   margin-top: 2rem;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid #e5e7eb;
+  /* Removed border to match clean design */
 }
 
 /* Responsive Design */

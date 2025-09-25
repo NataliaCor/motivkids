@@ -5,17 +5,20 @@ import { CardComponent } from '../../components/card/card.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { SearchInputComponent } from '../../components/search-input/search-input.component';
 import { MessageItemComponent, Message } from '../../components/message-item/message-item.component';
-import { RelationshipType } from '../../components/relationship-badge/relationship-badge.component';
+import { AvatarComponent } from '../../components/avatar/avatar.component';
+import { RelationshipBadgeComponent, RelationshipType } from '../../components/relationship-badge/relationship-badge.component';
+import { MessageModalComponent, MessageFormData } from '../../components/message-modal/message-modal.component';
 
 @Component({
   selector: 'app-messages',
   imports: [
     CommonModule, 
     NavbarComponent, 
-    CardComponent, 
     ButtonComponent, 
     SearchInputComponent, 
-    MessageItemComponent
+    AvatarComponent,
+    RelationshipBadgeComponent,
+    MessageModalComponent
   ],
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.css'
@@ -23,7 +26,7 @@ import { RelationshipType } from '../../components/relationship-badge/relationsh
 export class MessagesComponent implements OnInit {
   // Navbar data
   userName = 'Ana García';
-  userAvatar = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ana';
+  userAvatar = 'AG';
   notificationCount = 3;
   messageCount = 7;
 
@@ -42,9 +45,18 @@ export class MessagesComponent implements OnInit {
     { value: 'unread', label: 'No leídos' }
   ];
 
+  // Modal state
+  isModalOpen = false;
+  modalMode: 'add' | 'edit' = 'add';
+  editingMessage: Message | null = null;
+
   ngOnInit() {
     this.loadMessages();
     this.applyFilters();
+  }
+
+  get initialMessageData(): MessageFormData | undefined {
+    return this.editingMessage ? { message: this.editingMessage.message } : undefined;
   }
 
   private loadMessages() {
@@ -134,13 +146,15 @@ export class MessagesComponent implements OnInit {
   }
 
   onAddMessage() {
-    console.log('Add new message');
-    // Here you would typically open a modal or navigate to a form
+    this.modalMode = 'add';
+    this.editingMessage = null;
+    this.isModalOpen = true;
   }
 
   onEditMessage(message: Message) {
-    console.log('Editing message:', message);
-    // Implement edit functionality
+    this.modalMode = 'edit';
+    this.editingMessage = message;
+    this.isModalOpen = true;
   }
 
   onDeleteMessage(message: Message) {
@@ -149,6 +163,37 @@ export class MessagesComponent implements OnInit {
       this.allMessages = this.allMessages.filter(m => m.id !== message.id);
       this.applyFilters();
     }
+  }
+
+  onModalClose() {
+    this.isModalOpen = false;
+    this.editingMessage = null;
+  }
+
+  onMessageSave(formData: MessageFormData) {
+    if (this.modalMode === 'add') {
+      const newMessage: Message = {
+        id: Date.now().toString(),
+        senderName: this.userName,
+        senderAvatar: this.userAvatar,
+        relationshipType: 'mama' as RelationshipType,
+        message: formData.message,
+        timestamp: 'Ahora',
+        timeAgo: 'Ahora',
+        isRead: true
+      };
+      this.allMessages.unshift(newMessage);
+    } else if (this.modalMode === 'edit' && this.editingMessage) {
+      const messageIndex = this.allMessages.findIndex(m => m.id === this.editingMessage!.id);
+      if (messageIndex !== -1) {
+        this.allMessages[messageIndex] = {
+          ...this.allMessages[messageIndex],
+          message: formData.message
+        };
+      }
+    }
+    
+    this.applyFilters();
   }
 
   private applyFilters() {

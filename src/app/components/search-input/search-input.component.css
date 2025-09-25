@@ -35,11 +35,13 @@
 
 /* Icon Styles */
 .search-input__icon {
-  color: var(--color-gray-dark);
+  color: #6B7280;
   font-size: 1rem;
   margin-right: 8px;
   flex-shrink: 0;
   user-select: none;
+  display: flex;
+  align-items: center;
 }
 
 .search-input--small .search-input__icon {
@@ -84,14 +86,14 @@
 .search-input__clear {
   background: none;
   border: none;
-  color: var(--color-gray-dark);
+  color: #6B7280;
   cursor: pointer;
   padding: 4px;
   margin-left: 8px;
   border-radius: 4px;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,8 +102,8 @@
 }
 
 .search-input__clear:hover {
-  background: var(--color-gray-light);
-  color: var(--color-accent);
+  background: #F3F4F6;
+  color: #374151;
 }
 
 .search-input--small .search-input__clear {
