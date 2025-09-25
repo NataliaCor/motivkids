@@ -1,0 +1,96 @@
+<div class="login-container min-h-screen d-flex align-center justify-center p-4">
+  <div class="login-card card rounded-xl bg-white text-center position-relative">
+    <div class="login-header">
+      <h1 class="login-title">Iniciar Sesión</h1>
+      <p class="login-subtitle">Bienvenido de vuelta</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form d-flex flex-column">
+      <!-- Campo Email -->
+      <div class="form-group">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <div class="input-wrapper">
+          <i class="bi bi-envelope input-icon"></i>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="form-input"
+            [class.error]="email?.invalid && email?.touched"
+            placeholder="tu@email.com"
+            autocomplete="email"
+          >
+        </div>
+        <div class="error-message" *ngIf="email?.invalid && email?.touched">
+          <span *ngIf="email?.errors?.['required']">El correo electrónico es requerido</span>
+          <span *ngIf="email?.errors?.['email']">Ingresa un correo electrónico válido</span>
+        </div>
+      </div>
+
+      <!-- Campo Contraseña -->
+      <div class="form-group">
+        <label for="password" class="form-label">Contraseña</label>
+        <div class="input-wrapper">
+          <i class="bi bi-lock input-icon"></i>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="form-input"
+            [class.error]="password?.invalid && password?.touched"
+            placeholder="••••••••"
+            autocomplete="current-password"
+          >
+        </div>
+        <div class="error-message" *ngIf="password?.invalid && password?.touched">
+          <span *ngIf="password?.errors?.['required']">La contraseña es requerida</span>
+          <span *ngIf="password?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</span>
+        </div>
+      </div>
+
+      <!-- Recordarme y Olvidaste contraseña -->
+      <div class="form-options d-flex justify-between align-center">
+        <label class="checkbox-wrapper d-flex align-center">
+          <input
+            type="checkbox"
+            formControlName="rememberMe"
+            class="checkbox-input rounded-sm"
+          >
+          <span class="checkbox-label">Recordarme</span>
+        </label>
+        <button
+          type="button"
+          class="forgot-password-link"
+          (click)="navigateToForgotPassword()"
+        >
+          ¿Olvidaste tu contraseña?
+        </button>
+      </div>
+
+      <!-- Botón de login -->
+      <div class="login-button-wrapper">
+        <app-button
+          text="Ingresar"
+          variant="accent"
+          size="large"
+          [fullWidth]="true"
+          [disabled]="isLoading"
+          [loading]="isLoading"
+          (buttonClick)="onSubmit()"
+        ></app-button>
+      </div>
+
+      <!-- Enlace a registro -->
+      <div class="register-link text-center">
+        <span>¿No tienes una cuenta? </span>
+        <button
+          type="button"
+          class="register-button"
+          (click)="navigateToRegister()"
+        >
+          Regístrate aquí
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,132 @@
+/* Container principal con fondo oscuro */
+.login-container {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  font-family: var(--font-family-primary);
+}
+
+/* Card principal del login */
+.login-card {
+  max-width: 420px;
+  width: 100%;
+  padding: var(--spacing-2xl) calc(var(--spacing-2xl) - var(--spacing-sm));
+}
+
+/* Header del login */
+.login-header {
+  margin-bottom: calc(var(--spacing-xl) + var(--spacing-sm));
+}
+
+.login-title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+  color: #2c3e50;
+  margin: 0 0 var(--spacing-sm) 0;
+  letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+  color: #7f8c8d;
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+}
+
+/* Formulario */
+.login-form {
+  gap: var(--spacing-lg);
+}
+
+/* Mensajes de error - personalizados para login */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: var(--spacing-xs);
+}
+
+/* Opciones del formulario (Recordarme y Olvidaste contraseña) */
+.form-options {
+  margin: var(--spacing-sm) 0;
+}
+
+/* Checkbox personalizado */
+.checkbox-wrapper {
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.checkbox-input {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-gray);
+  cursor: pointer;
+  accent-color: var(--color-accent);
+}
+
+.checkbox-label {
+  color: var(--color-black);
+  font-weight: 500;
+  user-select: none;
+}
+
+/* Enlace de contraseña olvidada */
+.forgot-password-link {
+  background: none;
+  border: none;
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.forgot-password-link:hover {
+  color: #7dd3ff;
+  text-decoration: underline;
+}
+
+/* Botón de login */
+.login-button-wrapper {
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+}
+
+/* Enlace de registro */
+.register-link {
+  font-size: 0.9rem;
+  color: var(--color-gray-dark);
+}
+
+.register-button {
+  background: none;
+  border: none;
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.register-button:hover {
+  color: #7dd3ff;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    max-width: 100%;
+  }
+  
+  .login-title {
+    font-size: 1.75rem;
+  }
+  
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

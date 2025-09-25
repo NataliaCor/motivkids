@@ -19,16 +19,15 @@
 
 /* Page Header */
 .page-header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .page-title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  text-align: left;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
   color: #1F2937;
   margin: 0 0 1rem 0;
   letter-spacing: -0.02em;
@@ -39,6 +38,7 @@
   color: #6B7280;
   margin: 0;
   line-height: 1.6;
+  text-align: left;
 }
 
 /* Support Cards Section */
@@ -51,11 +51,8 @@
 
 /* Action Buttons Section */
 .action-buttons {
-  background: white;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid #F3F4F6;
 }
 
 .buttons-container {
@@ -63,38 +60,6 @@
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
-}
-
-/* Custom button styles */
-.action-buttons ::ng-deep .faq-button .btn {
-  border-color: #9FDFE0;
-  color: #0F4A4B;
-}
-
-.action-buttons ::ng-deep .faq-button .btn:hover {
-  background-color: #9FDFE0;
-  color: #0F4A4B;
-}
-
-.action-buttons ::ng-deep .tutorial-button .btn {
-  border-color: #6A951F;
-  color: #6A951F;
-}
-
-.action-buttons ::ng-deep .tutorial-button .btn:hover {
-  background-color: #6A951F;
-  color: white;
-}
-
-.action-buttons ::ng-deep .contact-button .btn {
-  background-color: #6A951F;
-  border-color: #6A951F;
-  color: white;
-}
-
-.action-buttons ::ng-deep .contact-button .btn:hover {
-  background-color: #5A7E1A;
-  border-color: #5A7E1A;
 }
 
 /* Responsive Design */
@@ -124,11 +89,6 @@
   .buttons-container {
     flex-direction: column;
     gap: 1rem;
-  }
-  
-  .buttons-container ::ng-deep .btn {
-    width: 100%;
-    justify-content: center;
   }
 }
 

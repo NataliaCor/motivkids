@@ -43,7 +43,8 @@
 }
 
 .page-title {
-  font-size: 1.5rem;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
   font-weight: 600;
   color: var(--color-black);
   margin: 0 0 8px 0;
@@ -77,8 +78,7 @@
 
 /* ===== COMPONENT OVERRIDES ===== */
 .search-container,
-.filter-container,
-.card-header > app-button {
+.filter-container {
   height: 42px;
   display: flex;
   align-items: center;
@@ -111,20 +111,7 @@
   box-sizing: border-box;
 }
 
-.card-header ::ng-deep app-button,
-.card-header ::ng-deep app-button > button,
-.card-header ::ng-deep app-button .button {
-  height: 42px !important;
-  min-height: 42px !important;
-  max-height: 42px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 16px !important;
-  font-size: 0.875rem !important;
-  line-height: 1.2 !important;
-  box-sizing: border-box !important;
-}
+/* ===== MODAL STYLES ===== */
 
 /* ===== MESSAGES LIST ===== */
 .messages-list {

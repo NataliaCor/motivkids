@@ -1,103 +1,59 @@
 /* Modal Header Custom */
 .modal-header-custom {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 0 1rem 0;
+  padding: var(--spacing-lg) 0 var(--spacing-md) 0;
   border-bottom: 1px solid #e1e5e9;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .modal-header-custom h2 {
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-black);
 }
 
 .close-button {
   background: none;
   border: none;
-  padding: 0.5rem;
+  padding: var(--spacing-sm);
   cursor: pointer;
-  border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
+  color: var(--color-gray-dark);
+  transition: var(--transition-fast);
 }
 
 .close-button:hover {
-  background-color: #f5f5f5;
-  color: var(--text-primary);
+  background-color: var(--color-gray-light);
+  color: var(--color-black);
 }
 
 /* Modal Footer Custom */
 .modal-footer-custom {
-  display: flex;
-  gap: 1rem;
+  gap: var(--spacing-md);
   justify-content: stretch;
-  padding: 1.5rem 0 0 0;
+  padding: var(--spacing-lg) 0 0 0;
   border-top: 1px solid #e1e5e9;
-  margin-top: 2rem;
-}
-
-.modal-footer-custom app-button {
-  flex: 1;
+  margin-top: var(--spacing-xl);
 }
 
 .message-form {
   padding: 0;
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-label {
-  display: block;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.form-textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #e1e5e9;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-family: inherit;
-  background-color: #fff;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-  resize: vertical;
-  min-height: 120px;
-}
-
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(238, 201, 37, 0.1);
-}
-
 .char-count {
-  text-align: right;
-  font-size: 0.75rem;
-  color: var(--text-tertiary);
-  margin-top: 0.5rem;
+  font-size: var(--font-size-small);
+  color: var(--color-gray-dark);
+  margin-top: var(--spacing-sm);
 }
 
 .char-count.over-limit {
   color: #ef4444;
 }
 
-/* Placeholder styling */
+/* Placeholder styling for textarea */
 .form-textarea::placeholder {
-  color: var(--text-tertiary);
+  color: var(--color-gray-dark);
   font-style: italic;
 }

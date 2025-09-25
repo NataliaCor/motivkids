@@ -35,8 +35,8 @@
 }
 
 .page-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
   color: #000000;
   margin: 0;
   letter-spacing: -0.02em;

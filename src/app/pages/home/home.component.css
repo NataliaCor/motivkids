@@ -7,6 +7,7 @@
 
 .dashboard__main {
   padding: 24px;
+  margin-top: 70px;
 }
 
 .dashboard__container {
@@ -42,7 +43,8 @@
 }
 
 .stats-card__icon {
-  font-size: 1.5rem;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
   display: flex;
   align-items: center;
   justify-content: center;

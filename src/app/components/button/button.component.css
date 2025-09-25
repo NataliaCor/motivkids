@@ -85,6 +85,46 @@
   box-shadow: 0 4px 12px rgba(106, 149, 31, 0.2);
 }
 
+/* Day selector button variant */
+.btn--day {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-gray);
+  background-color: var(--color-white);
+  color: var(--color-gray-dark);
+  font-weight: 500;
+  font-size: var(--font-size-small);
+  padding: 0;
+}
+
+.btn--day:hover:not(.btn--disabled) {
+  border-color: var(--color-accent);
+  background-color: rgba(238, 201, 37, 0.05);
+  transform: none;
+  box-shadow: none;
+}
+
+.btn--day.btn--active {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn--day.btn--active:hover:not(.btn--disabled) {
+  background-color: var(--color-accent-light);
+  border-color: var(--color-accent-light);
+  transform: none;
+}
+
+/* Responsive day button */
+@media (max-width: 640px) {
+  .btn--day {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+}
+
 /* Button sizes */
 .btn--small {
   padding: 8px 16px;

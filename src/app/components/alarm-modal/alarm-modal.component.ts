@@ -27,10 +27,10 @@ export interface AlarmFormData {
       (modalClose)="onClose()">
       <div class="alarm-form">
         <!-- Header interno -->
-        <div class="modal-header-custom">
+        <div class="modal-header-custom d-flex align-center">
           <h2>{{ mode === 'add' ? 'Agregar Alarma' : 'Editar Alarma' }}</h2>
           <button 
-            class="close-button" 
+            class="close-button rounded-full d-flex align-center justify-center" 
             (click)="onClose()"
             type="button"
             aria-label="Cerrar">
@@ -100,15 +100,15 @@ export interface AlarmFormData {
         <!-- Días -->
         <div class="form-group">
           <label>Días</label>
-          <div class="days-container">
+          <div class="days-container d-flex flex-wrap justify-center">
             @for (day of dayOptions; track day.value) {
-              <button 
-                type="button"
-                class="day-btn"
-                [class.active]="isDaySelected(day.value)"
-                (click)="toggleDay(day.value)">
-                {{ day.short }}
-              </button>
+              <app-button
+                [text]="day.short"
+                variant="day"
+                size="small"
+                [active]="isDaySelected(day.value)"
+                (buttonClick)="toggleDay(day.value)"
+              ></app-button>
             }
           </div>
         </div>
@@ -143,7 +143,7 @@ export interface AlarmFormData {
         </div>
 
         <!-- Footer con botones -->
-        <div class="modal-footer-custom">
+        <div class="modal-footer-custom d-flex">
           <app-button
             text="Cancelar"
             variant="outline"

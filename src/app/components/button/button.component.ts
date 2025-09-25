@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'outline' | 'turquoise';
+export type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'outline' | 'turquoise' | 'day';
 export type ButtonSize = 'small' | 'medium' | 'large';
 
 @Component({
@@ -16,6 +16,7 @@ export class ButtonComponent {
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
   @Input() fullWidth: boolean = false;
+  @Input() active: boolean = false;
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   
   @Output() buttonClick = new EventEmitter<Event>();
@@ -42,6 +43,10 @@ export class ButtonComponent {
     
     if (this.fullWidth) {
       classes.push('btn--full-width');
+    }
+    
+    if (this.active) {
+      classes.push('btn--active');
     }
     
     return classes.join(' ');

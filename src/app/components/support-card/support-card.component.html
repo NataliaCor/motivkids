@@ -1,10 +1,12 @@
 <div class="support-card">
   <!-- Card Header -->
   <div class="card-header">
-    <div class="icon-container" [ngClass]="'icon-' + iconColor">
-      <span class="icon">{{ icon }}</span>
+    <div class="header-top">
+      <div class="icon-container" [ngClass]="'icon-' + iconColor">
+        <span class="icon">{{ icon }}</span>
+      </div>
+      <h3 class="card-title">{{ title }}</h3>
     </div>
-    <h3 class="card-title">{{ title }}</h3>
     <p class="card-description">{{ description }}</p>
   </div>
 
@@ -47,12 +49,6 @@
                 }
               </div>
             </div>
-            <button 
-              class="contact-button"
-              [disabled]="!option.available"
-              (click)="onContactClick(option)">
-              {{ option.available ? 'Contactar' : 'No disponible' }}
-            </button>
           </div>
         }
       </div>
@@ -66,7 +62,6 @@
             <button 
               class="tutorial-link"
               (click)="onItemClick(item)">
-              <span class="play-icon">▶️</span>
               <span class="tutorial-title">{{ item.title }}</span>
               @if (item.duration) {
                 <span class="tutorial-duration">{{ item.duration }}</span>

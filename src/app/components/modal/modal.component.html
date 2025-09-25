@@ -9,6 +9,7 @@
   <div 
     #modalContainer
     class="modal-container"
+    (click)="$event.stopPropagation()"
     [class.modal-container--animating]="isAnimating">
     
     <!-- Modal Header -->

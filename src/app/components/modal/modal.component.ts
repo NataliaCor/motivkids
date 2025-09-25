@@ -71,9 +71,12 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   onBackdropClick(event: Event) {
-    if (this.config.closeOnBackdropClick) {
+    if (this.config.closeOnBackdropClick && event.target === event.currentTarget) {
+      // Solo cerrar si el click fue directamente en el backdrop, no en elementos hijos
       const target = event.target as HTMLElement;
       if (target.classList.contains('modal-backdrop')) {
+        event.preventDefault();
+        event.stopPropagation();
         this.backdropClick.emit();
         this.closeModal();
       }

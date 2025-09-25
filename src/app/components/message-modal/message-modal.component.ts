@@ -20,10 +20,10 @@ export interface MessageFormData {
       
       <div class="message-form">
         <!-- Header interno -->
-        <div class="modal-header-custom">
+        <div class="modal-header-custom d-flex align-center">
           <h2>{{ mode === 'add' ? 'Agregar Mensaje' : 'Editar Mensaje' }}</h2>
           <button 
-            class="close-button" 
+            class="close-button rounded-full d-flex align-center justify-center" 
             (click)="onClose()"
             type="button"
             aria-label="Cerrar">
@@ -35,19 +35,19 @@ export interface MessageFormData {
           <label for="message-input" class="form-label">Mensaje</label>
           <textarea
             id="message-input"
-            class="form-textarea"
+            class="form-control form-textarea"
             placeholder="Escribe tu mensaje aquí..."
             [(ngModel)]="formData.message"
             rows="6"
             maxlength="500">
           </textarea>
-          <div class="char-count">
+          <div class="char-count text-right">
             {{ formData.message.length }}/500
           </div>
         </div>
 
         <!-- Footer con botones -->
-        <div class="modal-footer-custom">
+        <div class="modal-footer-custom d-flex">
           <app-button
             text="Cancelar"
             variant="outline"

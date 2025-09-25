@@ -17,19 +17,28 @@
 
 /* Card Header */
 .card-header {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 24px;
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .icon-container {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 16px auto;
-  font-size: 28px;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 
 .icon-turquoise {
@@ -48,10 +57,11 @@
 }
 
 .card-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
   color: #1F2937;
-  margin: 0 0 8px 0;
+  margin: 0;
+  text-align: left;
 }
 
 .card-description {
@@ -59,6 +69,7 @@
   color: #6B7280;
   margin: 0;
   line-height: 1.5;
+  text-align: left;
 }
 
 /* Card Content */
